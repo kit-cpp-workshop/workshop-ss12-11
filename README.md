@@ -2,7 +2,12 @@
 
 ## Inhalt
 
-Kurze Einführung in die Thematik
+ - Assertions
+ - Defensive Programmierung und Design by Contract
+ - Testing/Test Driven Development
+ - Dokumentation
+ - Entwurfsmuster
+ - Wasserfall-Modell vs. agile Softwareentwicklung
 
 ### Folien zum Vortrag
 
@@ -16,15 +21,9 @@ Ein Screencast des Vortrags wird nach dem Workshop an dieser Stelle verlinkt.
 
 Sendet, nachdem ihr alle Aufgaben abgearbeitet habt, einen Pull-Request an das Workshop-Repository. Stellt sicher, dass ihr vorher alle eure Änderungen in euren Fork übertragen habt. Nennt euren Workshop-Betreuer im Text des Pull-Requests, einer der Betreuer (bevorzugt der genannte) wird dann eure Lösungen durchsehen, kommentieren und nach Abschluss des Reviews den Pull-Request als abgelehnt markieren.
 
-### Aufgabe 0: Vorbereitung
+### Keine neuen Aufgaben
 
-Inhalt?!
-
-
-### Aufgabe 1: Aufgabentitel
-
-Aufgabenbeschreibung
-
+Stattdessen soll (gemeinsam) an den ausstehenden Aufgaben der letzten Workshops gearbeitet werden.
 
 ### Bonusaufgabe: Project Euler
 
