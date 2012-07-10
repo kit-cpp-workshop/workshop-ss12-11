@@ -1,0 +1,77 @@
+\section{Defensive Programming}
+\begin{frame}{Paranoia!}
+	\begin{itemize}
+		\begin{small}
+			\item Murphys Gesetz: \enquote{Whatever can go wrong, will go wrong.}
+			\item \enquote{Programming today is a race between software engineers striving to build bigger and better idiot-proof programs and the universe, trying to produce bigger and better idiots. So far, the universe wins.} [Rich Cook]
+		\end{small}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Defensive Programmierung?!}	
+	\begin{block}{Ziele}
+		Verbesserung von Software im Bezug auf:
+		\begin{itemize}
+			\item Sicherheit
+			\item Stabilität
+			\item Robustheit
+		\end{itemize}
+	\end{block}
+	
+	\begin{itemize}
+		\item Guter Code ist gut lesbar (und damit überprüfbar)
+		\item Vermeiden von Fehlerquellen
+		\item (Frühzeitige) Behandlung möglicher Fehlerfälle
+		\item Schutz von Invarianten
+		\item \enquote{never trust the client}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Design by Contract}
+	\begin{itemize}
+		\item \enquote{Vertrag} zwischen Schnittstellen/Klassen/Methoden und Nutzern über deren Verhalten und Verwendung
+		\item Schlüsselelemente: Invarianten
+		\begin{itemize}
+			\item Vor- und Nachbedingungen
+			\item Invarianten von Klassen/Algorithmen
+		\end{itemize}
+		\item Weitere Aussagen/Zusicherungen:
+		\begin{itemize}
+			\item Zulässige Eingaben, mögliche Ausgaben
+			\item Sonstige Seiteneffekte
+			\item Mögliche Fehlerzustände/Exceptions
+			\item Leistungsgarantien
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Design by Contract bedeutet \dots}
+	\begin{block}{\dots für den Klassenentwickler}
+		\begin{itemize}
+			\item Seine Vorraussetzungen/Bedingungen zu dokumentieren
+			\begin{itemize}
+				\item Und im Sinne defensiver Programmierung auch durchzusetzen!
+			\end{itemize}
+			\item Eigenen Code anhand ausgearbeiteter Invarianten zu verifizieren
+			\item Implementierungsdetails zu verbergen (information hiding)
+			\begin{itemize}
+				\item Alles von außen Sichtbare gehört zum Vertrag
+				\item Implementierungen können sich ändern - Die Schnittstelle nicht
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\begin{block}{\dots für den Nutzer}
+		\begin{itemize}
+			\item Einhaltung der dokumentierten Bedingungen
+			\item Ausschließliche (!) Nutzung auf Basis des Vertrages
+			\begin{itemize}
+				\item Nach außen verborgene Implementierungsdetails gehören nicht dazu!
+			\end{itemize}
+		\end{itemize}		
+	\end{block}
+\end{frame}
+
+\begin{frame}{Assertions}
+
+\end{frame}
+
