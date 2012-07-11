@@ -1,0 +1,38 @@
+\section{Dokumentation}
+
+\begin{frame}{Warum Dokumentation wichtig ist}
+	Beispiel: \texttt{std::map::insert} \\
+	\texttt{pair<iterator,bool> insert(const pair<const Key, T> \&x)}
+	
+	\begin{itemize}
+		\item Vorbedingungen?
+		\item Mögliche Fehlerzustände?
+		\item Rückgabewerte?
+		\item Seiteneffekte?
+		\item Sonstiges Verhalten?
+		\item Laufzeit?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Doxygen}
+	\begin{itemize}
+		\item Ein Werkzeug zur Dokumentation
+		\item Dokumentation erfolgt mit speziellen Kommentaren im Quellcode
+		\begin{itemize}
+			\item Vorteil: Lokalität, Wartbarkeit
+			\item Verschiedene Stil wählbar (Javadoc, Qt)
+		\end{itemize}
+		\item \texttt{doxygen} durchsucht Quelltext nach Dokumentation
+		\item Steuerung über ein \enquote{doxyfile} (Suchpfade, Formatierung etc.)
+		\item Ausgabeformate: PDF, HTML, RTF, Manpage \dots
+	\end{itemize}
+
+	\footnotesize{\url{http://www.stack.nl/~dimitri/doxygen/}}
+\end{frame}
+
+\begin{frame}{Beispiel}
+	\lstinputlisting{cpp-code/doxygen.cpp}
+	
+	(Javadoc-Style, \texttt{JAVADOC\_AUTOBRIEF = YES})
+\end{frame}
+
