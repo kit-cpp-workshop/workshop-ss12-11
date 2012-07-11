@@ -1,0 +1,61 @@
+\section{Testing}
+
+\begin{frame}{Software-Testing}
+	\begin{itemize}
+		\item Ziel: Fehler finden!
+		\item Fehlerfreiheit kann damit nicht garantiert werden!
+	\end{itemize}
+
+	\begin{block}{White/Glass Box Testing}
+		\begin{itemize}
+			\item Test bezieht Wissen über Funktionsweise der zu testenden Funktionen ein
+			\item Ziel: Möglichst gründliche Prüfung aller Codepfade
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Black Box Testing}
+		\begin{itemize}
+			\item Kein Wissen über die Funktionsweise/Implementierung
+			\item Prüfung der dokumentierten Verhaltensweisen (Vertrag!)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Test-Frameworks}
+	\begin{itemize}
+		\item Tests von Hand: Fehleranfällig, langsam und machen keinen Spaß
+		\item Test-Frameworks ermöglichen die Automation von Tests
+		\item Einbindung von Tests in den Workflow!
+	\end{itemize}
+	
+	\begin{block}{Grundlagen}
+		\begin{itemize}
+			\item Testcase: Prüft einen spezifischen Aspekt einer Klasse/Methode
+			\item Fixture: Schafft Rahmenbedingungen für Tests
+			\item Testsuite: Eine Menge von Tests die die gleiche Fixture nutzen	
+			\item Ablauf (die Schritte 2-4 werden für jeden Test wiederholt):
+			\begin{enumerate}
+				\item Initialisierung der Testsuite
+				\item Vorbereitung der Fixture
+				\item Ausführung Text X
+				\item Aufräumen der Fixture
+				\item Aufräumen der Testsuite
+			\end{enumerate}	
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Test-Driven Development}
+	\begin{itemize}
+		\item Klassischer Ablauf: Erst Implementierung, dann Testen
+		\item Test-Driven: Zuerst Testfälle auf Basis der Spezifikation
+		\item Implementierung mit dem Ziel, Testfälle zu bestehen
+		\item Grey Box Testing
+		\item Schnelle Rückkoppelung schon während der Implementierung
+		\begin{itemize}
+			\item Wichtige Komponente agiler Entwicklungsprozesse
+		\end{itemize}
+		\item Fördert Modularisierung, Flexibilität und Erweiterbarkeit
+	\end{itemize}
+\end{frame}
+
