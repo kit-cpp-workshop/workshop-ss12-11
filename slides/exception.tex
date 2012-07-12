@@ -1,0 +1,44 @@
+\begin{frame}{Exception Guarantees}
+
+    Sind nötig bei: 
+	\begin{itemize}
+		\item Funktionen die Objekte verändern
+		\item Memberfunktionen von Klassen
+		\item Konstruktoren
+		\item Destruktoren
+	\end{itemize}
+	
+	Mögliche Stufen:
+	\begin{itemize}
+			\item ,,no-throw guarantee'': es wird keine exception geworfen
+			\item ,,strong guarantee'': wenn eine exception geworfen wurde, wurde nichts verändert
+			\item ,,basic/weak guarantee'': keine memleaks, objekt kann noch benutzt werden, zustand unbekannt
+			\item ,,exception unsafe'': ungültige pointer, memleaks, unlogische zustände von objekten
+	\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Destruktor}
+
+    Der Destruktor darf keine Exception werfen (no-throw guarantee).
+    
+    Wenn ein Destruktor eine Exception wirft, wird das Programm abgebrochen.
+    
+    Im Destruktor dürfen Funktionen die Exceptions werfen aufgerufen werden, solange die Exceptions abgefanegen werden.
+
+\end{frame}
+
+\begin{frame}{Konstruktor}
+
+    Der Konstruktor sollte dann eine Exception werfen, wenn das Objekt nicht in einen gültigen Zustand versetzt werden kann.
+    
+    Allokierter Speicher muss vorher freigegeben werden.
+    
+    Veränderte andere Objekte müssen vorher in den Ausgangszustand zurück versetzt werden.
+    
+    strong guarantee
+    \lstinputlisting{cpp-code/except1.cpp}
+
+\end{frame}
+
