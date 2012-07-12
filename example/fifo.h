@@ -69,7 +69,7 @@ namespace task02 {
 		     * @return die Anzahl der in das übergebene Array geschriebenen
 		     *         Elemente, die std::min(count, getCount()) entspricht
 		     */
-		    size_t getDataCopy(double *(&buffer), const size_t count);
+		    size_t getDataCopy(double *buffer, const size_t count);
 
 		    /**
 		     * Gibt die Speicherkapazität des Fifo in double-Elementen zurück.

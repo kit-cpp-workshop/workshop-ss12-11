@@ -63,7 +63,7 @@ namespace task02 {
                 count = 0;
             }
 
-            size_t getDataCopy(double *(&buffer), const size_t count) {
+            size_t getDataCopy(double *buffer, const size_t count) {
                 size_t read = readPos;
 
                 for (size_t i = 0; i < std::min(count, this->count); i++) {
@@ -110,7 +110,7 @@ namespace task02 {
         impl->clear();
     }
 
-    size_t Fifo::getDataCopy(double *(&buffer), const size_t count) {
+    size_t Fifo::getDataCopy(double *buffer, const size_t count) {
         return impl->getDataCopy(buffer, count);
     }
 
