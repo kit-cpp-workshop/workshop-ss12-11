@@ -1,3 +1,4 @@
+class fooImpl; // forward declaration
 class foo {
 	public:
 		// imagine constructor and destructor here ...
@@ -5,6 +6,5 @@ class foo {
 			impl->bar();
 		}
 	private:
-		class fooImpl; // forward declaration
 		fooImpl *impl; // pointer to implementation
 }
