@@ -58,8 +58,9 @@ namespace task02 {
 		    void clear();
 
 		    /**
-		     * Kopiert alle im Fifo gespeicherten Daten in das übergebene Array,
-		     * sofern dessen Kapazität dafür ausreichend ist.
+		     * Kopiert die im Fifo gespeicherten Daten in das übergebene Array.
+		     * Es werden so viele Elemente kopiert, bis entweder alle momentan
+			 * im Fifo vorhandenen kopiert wurden oder der Array voll ist.
 		     *
 		     * @param buffer die Adresse des Arrays, in das der Inhalt des Fifos
 		     *               kopiert werden soll
