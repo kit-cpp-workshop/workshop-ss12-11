@@ -24,8 +24,8 @@ namespace task02 {
              * Erzeugt eine neue Fifo-Instanz mit der gegebenen Kapazität.
              *
              * @param size die Größe des Fifos
-             * @throw std::bad_alloc wenn der Speicher nicht zum Anlegen des
-             *                       Fifos ausreicht
+             * @throw std::bad_alloc wenn bei der (internen) Speicherallokation
+			 *        etwas schiefgeht
              */
 		    Fifo(const size_t size);
 		    /**
