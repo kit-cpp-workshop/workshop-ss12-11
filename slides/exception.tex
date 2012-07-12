@@ -16,8 +16,8 @@
 	
 	Mögliche Stufen:
 	\begin{enumerate}
-		\item \enquote{exception unsafe}: ungültige pointer, memleaks, unlogische zustände von objekten
-		\item \enquote{basic/weak guarantee}: keine memleaks, objekt kann noch benutzt werden, zustand unbekannt
+		\item \enquote{exception unsafe}: ungültige pointer, memleaks, unlogische (inkonsistente) zustände von objekten
+		\item \enquote{basic/weak guarantee}: keine memleaks, objekt kann noch benutzt werden, zustand sicher und wohldefiniert aber (dem Nutzer zunächst) unbekannt
 		\item \enquote{strong guarantee}: wenn eine exception geworfen wurde, wurde nichts verändert
 		\item \enquote{no-throw guarantee}: es wird keine exception geworfen
 	\end{enumerate}
