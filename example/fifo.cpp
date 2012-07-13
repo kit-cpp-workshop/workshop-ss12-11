@@ -77,7 +77,11 @@ namespace task02 {
             }
 
             size_t getDataCopy(double *buffer, const size_t count) const {
-                // Hier sind mir keine sinnvollen/nichttrivialen Invarianten eingefallen ...
+                // - der Fifo selbst wird hierbei nicht verändert, und jeder
+                //   Zustand des Fifos ist für diese Aktion legal
+                // - für `count` sind alle Werte legal (valide)
+                // - `buffer` kann nicht geprüft werden (außer nullptr)
+                // => keine sinnvollen Invarianten
 
                 size_t read = readPos;
                 size_t const copyCount = std::min(count, this->count)
