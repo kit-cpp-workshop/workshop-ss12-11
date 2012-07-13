@@ -75,20 +75,20 @@ namespace task02 {
 		     * @return die Anzahl der in das übergebene Array geschriebenen
 		     *         Elemente, die std::min(count, getCount()) entspricht
 		     */
-		    size_t getDataCopy(double *buffer, const size_t count);
+		    size_t getDataCopy(double *buffer, const size_t count) const;
 
 		    /**
 		     * Gibt die Speicherkapazität des Fifo in double-Elementen zurück.
 		     *
 		     * @return die maximal speicherbare Elementanzahl
 		     */
-		    size_t getSize();
+		    size_t getSize() const;
 		    /**
 		     * Gibt die Anzahl der momentan gespeicherten Elemente zurück.
 		     *
 		     * @return die Anzahl der gespeicherten Elemente
 		     */
-		    size_t getCount();
+		    size_t getCount() const;
 		    /**
 		     * Gibt die verbleibende freien Speicherkapazität in
 		     * double-Elementen zurück.
@@ -98,7 +98,7 @@ namespace task02 {
 		     *
 		     * @return die Anzahl der noch nicht belegten Plätze im Fifo
 		     */
-		    size_t getRemaining();
+		    size_t getRemaining() const;
 		    
 		private:
 		    class Impl; // forward-declaration of nested implementation class

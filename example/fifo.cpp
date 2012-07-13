@@ -29,15 +29,15 @@ namespace task02 {
                 delete[] data;
             }
 
-            size_t getSize() {
+            size_t getSize() const {
                 return size;
             }
 
-            size_t getCount() {
+            size_t getCount() const {
                 return count;
             }
 
-            size_t getRemaining() {
+            size_t getRemaining() const {
                 return size - count;
             }
 
@@ -76,7 +76,7 @@ namespace task02 {
                 count = 0;
             }
 
-            size_t getDataCopy(double *buffer, const size_t count) {
+            size_t getDataCopy(double *buffer, const size_t count) const {
                 // Hier sind mir keine sinnvollen/nichttrivialen Invarianten eingefallen ...
 
                 size_t read = readPos;
@@ -138,19 +138,19 @@ namespace task02 {
         impl->clear();
     }
 
-    size_t Fifo::getDataCopy(double *buffer, const size_t count) {
+    size_t Fifo::getDataCopy(double *buffer, const size_t count) const {
         return impl->getDataCopy(buffer, count);
     }
 
-    size_t Fifo::getSize() {
+    size_t Fifo::getSize() const {
         return impl->getSize();
     }
 
-    size_t Fifo::getCount() {
+    size_t Fifo::getCount() const {
         return impl->getCount();
     }
 
-    size_t Fifo::getRemaining() {
+    size_t Fifo::getRemaining() const {
         return impl->getRemaining();
     }
 
