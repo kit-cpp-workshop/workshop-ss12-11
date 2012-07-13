@@ -29,15 +29,15 @@ namespace task02 {
                 delete[] data;
             }
 
-            size_t getSize() const {
+            size_t getSize() const noexcept {
                 return size;
             }
 
-            size_t getCount() const {
+            size_t getCount() const noexcept {
                 return count;
             }
 
-            size_t getRemaining() const {
+            size_t getRemaining() const noexcept {
                 return size - count;
             }
 
@@ -71,12 +71,12 @@ namespace task02 {
                 return result;
             }
 
-            void clear() {
+            void clear() noexcept {
                 readPos = 0;
                 count = 0;
             }
 
-            size_t getDataCopy(double *buffer, const size_t count) const {
+            size_t getDataCopy(double *buffer, const size_t count) const noexcept {
                 // - der Fifo selbst wird hierbei nicht verändert, und jeder
                 //   Zustand des Fifos ist für diese Aktion legal
                 // - für `count` sind alle Werte legal (valide)
@@ -106,7 +106,7 @@ namespace task02 {
         impl(new Impl(size)) {
     }
 
-    Fifo::~Fifo() {
+    Fifo::~Fifo() noexcept {
         delete impl;
     }
 
@@ -138,23 +138,23 @@ namespace task02 {
         return impl->pop();
     }
 
-    void Fifo::clear() {
+    void Fifo::clear() noexcept {
         impl->clear();
     }
 
-    size_t Fifo::getDataCopy(double *buffer, const size_t count) const {
+    size_t Fifo::getDataCopy(double *buffer, const size_t count) const noexcept {
         return impl->getDataCopy(buffer, count);
     }
 
-    size_t Fifo::getSize() const {
+    size_t Fifo::getSize() const noexcept {
         return impl->getSize();
     }
 
-    size_t Fifo::getCount() const {
+    size_t Fifo::getCount() const noexcept {
         return impl->getCount();
     }
 
-    size_t Fifo::getRemaining() const {
+    size_t Fifo::getRemaining() const noexcept {
         return impl->getRemaining();
     }
 
