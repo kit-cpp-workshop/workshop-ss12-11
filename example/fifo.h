@@ -13,7 +13,15 @@
 namespace task02 {
 
     /**
-     * Implementiert einen Ringpuffer (FiFo) für double-Zahlen.
+     * Implementiert einen Ringpuffer (FiFo) konstanter Größe für double-Zahlen.
+     *
+     * Laufzeitgarantien: Alle Methoden werden in O(1) (konstanter Zeit)
+     *                    ausgeführt. Ausgenommen davon ist getDataCopy()
+     *                    mit einer Laufzeit die in O(n) liegt.
+     *
+     * Exceptions: Wenn eine Methode dieser Klasse eine Exception wirft,
+     *             verbleibt die Fifo-Instanz in einem unveränderten Zustand
+     *             und kann normal weiter verwendet werden.
      *
      * @author Markus Jung
      */
@@ -24,43 +32,41 @@ namespace task02 {
              * Erzeugt eine neue Fifo-Instanz mit der gegebenen Kapazität.
              *
              * @param size die Größe des Fifos
-             * @throw std::bad_alloc wenn bei der (internen) Speicherallokation
-			 *        etwas schiefgeht
+             * @throw std::bad_alloc wenn die (interne) Speicherallokation
+			 *                       fehlschlägt
              */
 		    Fifo(const size_t size);
 		    /**
 		     * Zerstört die Fifo-Instanz und gibt den zusätzlich alloziierten
 		     * Speicher frei.
 		     */
-		    virtual ~Fifo();
+		    virtual ~Fifo() noexcept;
 
 		    /**
 		     * Fügt ein neues Element am Ende des Fifos ein, sofern der Fifo
 		     * noch über freien Speicherplatz verfügt.
 		     *
-		     * Laufzeit: O(1)
-		     *
 		     * @param d das am Ende einzufügende Element
-		     * @throw std::logic_error wenn (getRemaining == 0)
+		     * @throw std::logic_error wenn (getRemaining() == 0)
 		     */
 		    void push(const double &d);
 		    /**
 		     * Entfernt das erste Element aus dem Fifo und gibt es zurück.
 		     *
 		     * @return das (ehemalige) erste Element des Fifos
-		     * @throw std::logic_error wenn (getCount == 0)
+		     * @throw std::logic_error wenn (getCount() == 0)
 		     */
 		    double pop();
 		    /**
 		     * Leert den Fifo, nach einem Aufruf dieser Methode gilt:
 		     * (getCount() == 0).
 		     */
-		    void clear();
+		    void clear() noexcept;
 
 		    /**
 		     * Kopiert die im Fifo gespeicherten Daten in das übergebene Array.
 		     * Es werden so viele Elemente kopiert, bis entweder alle momentan
-			 * im Fifo vorhandenen kopiert wurden oder der Array voll ist.
+			 * im Fifo vorhandenen kopiert wurden oder das Array voll ist.
 		     *
 		     * @param buffer die Adresse des Arrays, in das der Inhalt des Fifos
 		     *               kopiert werden soll
@@ -69,20 +75,20 @@ namespace task02 {
 		     * @return die Anzahl der in das übergebene Array geschriebenen
 		     *         Elemente, die std::min(count, getCount()) entspricht
 		     */
-		    size_t getDataCopy(double *buffer, const size_t count);
+		    size_t getDataCopy(double *buffer, const size_t count) const noexcept;
 
 		    /**
 		     * Gibt die Speicherkapazität des Fifo in double-Elementen zurück.
 		     *
 		     * @return die maximal speicherbare Elementanzahl
 		     */
-		    size_t getSize();
+		    size_t getSize() const noexcept;
 		    /**
 		     * Gibt die Anzahl der momentan gespeicherten Elemente zurück.
 		     *
 		     * @return die Anzahl der gespeicherten Elemente
 		     */
-		    size_t getCount();
+		    size_t getCount() const noexcept;
 		    /**
 		     * Gibt die verbleibende freien Speicherkapazität in
 		     * double-Elementen zurück.
@@ -92,11 +98,11 @@ namespace task02 {
 		     *
 		     * @return die Anzahl der noch nicht belegten Plätze im Fifo
 		     */
-		    size_t getRemaining();
+		    size_t getRemaining() const noexcept;
 		    
 		private:
-		    class Impl;
-		    Impl *impl;
+		    class Impl; // forward-declaration of nested implementation class
+		    Impl *impl; // pointer-to-implementation
     };
 
 }
