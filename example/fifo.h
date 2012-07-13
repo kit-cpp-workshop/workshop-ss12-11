@@ -40,7 +40,7 @@ namespace task02 {
 		     * Zerstört die Fifo-Instanz und gibt den zusätzlich alloziierten
 		     * Speicher frei.
 		     */
-		    virtual ~Fifo() noexcept;
+		    virtual ~Fifo() throw();
 
 		    /**
 		     * Fügt ein neues Element am Ende des Fifos ein, sofern der Fifo
@@ -61,7 +61,7 @@ namespace task02 {
 		     * Leert den Fifo, nach einem Aufruf dieser Methode gilt:
 		     * (getCount() == 0).
 		     */
-		    void clear() noexcept;
+		    void clear() throw();
 
 		    /**
 		     * Kopiert die im Fifo gespeicherten Daten in das übergebene Array.
@@ -75,20 +75,20 @@ namespace task02 {
 		     * @return die Anzahl der in das übergebene Array geschriebenen
 		     *         Elemente, die std::min(count, getCount()) entspricht
 		     */
-		    size_t getDataCopy(double *buffer, const size_t count) const noexcept;
+		    size_t getDataCopy(double *buffer, const size_t count) const throw();
 
 		    /**
 		     * Gibt die Speicherkapazität des Fifo in double-Elementen zurück.
 		     *
 		     * @return die maximal speicherbare Elementanzahl
 		     */
-		    size_t getSize() const noexcept;
+		    size_t getSize() const throw();
 		    /**
 		     * Gibt die Anzahl der momentan gespeicherten Elemente zurück.
 		     *
 		     * @return die Anzahl der gespeicherten Elemente
 		     */
-		    size_t getCount() const noexcept;
+		    size_t getCount() const throw();
 		    /**
 		     * Gibt die verbleibende freien Speicherkapazität in
 		     * double-Elementen zurück.
@@ -98,7 +98,7 @@ namespace task02 {
 		     *
 		     * @return die Anzahl der noch nicht belegten Plätze im Fifo
 		     */
-		    size_t getRemaining() const noexcept;
+		    size_t getRemaining() const throw();
 		    
 		private:
 		    class Impl; // forward-declaration of nested implementation class

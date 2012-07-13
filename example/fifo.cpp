@@ -25,19 +25,19 @@ namespace task02 {
                 data(new double[size]) {  // Kann std::bad_alloc werfen -> Doku!
             }
 
-            ~Impl() noexcept {
+            ~Impl() throw() {
                 delete[] data;
             }
 
-            size_t getSize() const noexcept {
+            size_t getSize() const throw() {
                 return size;
             }
 
-            size_t getCount() const noexcept {
+            size_t getCount() const throw() {
                 return count;
             }
 
-            size_t getRemaining() const noexcept {
+            size_t getRemaining() const throw() {
                 return size - count;
             }
 
@@ -71,12 +71,12 @@ namespace task02 {
                 return result;
             }
 
-            void clear() noexcept {
+            void clear() throw() {
                 readPos = 0;
                 count = 0;
             }
 
-            size_t getDataCopy(double *buffer, const size_t count) const noexcept {
+            size_t getDataCopy(double *buffer, const size_t count) const throw() {
                 // - der Fifo selbst wird hierbei nicht verändert, und jeder
                 //   Zustand des Fifos ist für diese Aktion legal
                 // - für `count` sind alle Werte legal (valide)
@@ -106,7 +106,7 @@ namespace task02 {
         impl(new Impl(size)) {
     }
 
-    Fifo::~Fifo() noexcept {
+    Fifo::~Fifo() throw() {
         delete impl;
     }
 
@@ -138,23 +138,23 @@ namespace task02 {
         return impl->pop();
     }
 
-    void Fifo::clear() noexcept {
+    void Fifo::clear() throw() {
         impl->clear();
     }
 
-    size_t Fifo::getDataCopy(double *buffer, const size_t count) const noexcept {
+    size_t Fifo::getDataCopy(double *buffer, const size_t count) const throw() {
         return impl->getDataCopy(buffer, count);
     }
 
-    size_t Fifo::getSize() const noexcept {
+    size_t Fifo::getSize() const throw() {
         return impl->getSize();
     }
 
-    size_t Fifo::getCount() const noexcept {
+    size_t Fifo::getCount() const throw() {
         return impl->getCount();
     }
 
-    size_t Fifo::getRemaining() const noexcept {
+    size_t Fifo::getRemaining() const throw() {
         return impl->getRemaining();
     }
 
