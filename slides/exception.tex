@@ -24,14 +24,28 @@
 
 \end{frame}
 
+\begin{frame}{Stack Unwinding}
+    
+    \lstinputlisting{cpp-code/except2.cpp}
+
+    
+\end{frame}
+
+\begin{frame}{strong guarantee}
+    
+    \lstinputlisting{cpp-code/except3.cpp}
+    
+\end{frame}
+
 
 \begin{frame}{Destruktor}
 
-    Der Destruktor darf keine Exception werfen (no-throw guarantee).
+    Der Destruktor soll keine Exception werfen (no-throw guarantee).
+
+    Theoretisch kann ein Destruktor ohne Probleme eine Exception werfen.
+    Wenn jedoch beim Bearbeiten einer Exception ein Objekt gelöscht wird, und dessen Destruktor eine Exception wirft, dann terminiert das progamm.
     
-    Wenn ein Destruktor eine Exception wirft, wird das Programm abgebrochen.
-    
-    Im Destruktor dürfen Funktionen die Exceptions werfen aufgerufen werden, solange die Exceptions abgefanegen werden.
+    Im Destruktor dürfen Funktionen, die Exceptions werfen, aufgerufen werden, solange die Exceptions abgefangen werden.
 
 \end{frame}
 
