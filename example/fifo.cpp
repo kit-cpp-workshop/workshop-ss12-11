@@ -84,7 +84,7 @@ namespace task02 {
                 // => keine sinnvollen Invarianten
 
                 size_t read = readPos;
-                size_t const copyCount = std::min(count, this->count)
+                size_t const copyCount = std::min(count, this->count);
 
                 for (size_t i = 0; i < copyCount; i++) {
                     buffer[i] = data[read++];
