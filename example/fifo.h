@@ -47,14 +47,14 @@ namespace task02 {
 		     * noch über freien Speicherplatz verfügt.
 		     *
 		     * @param d das am Ende einzufügende Element
-		     * @throw std::logic_error wenn (getRemaining == 0)
+		     * @throw std::logic_error wenn (getRemaining() == 0)
 		     */
 		    void push(const double &d);
 		    /**
 		     * Entfernt das erste Element aus dem Fifo und gibt es zurück.
 		     *
 		     * @return das (ehemalige) erste Element des Fifos
-		     * @throw std::logic_error wenn (getCount == 0)
+		     * @throw std::logic_error wenn (getCount() == 0)
 		     */
 		    double pop();
 		    /**
