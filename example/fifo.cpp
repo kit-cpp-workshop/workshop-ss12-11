@@ -12,13 +12,17 @@
 
 namespace task02 {
 
+    /*
+     * Die verborgene Implementierung von Fifo, realisiert als "nested class".
+     * Außerhalb von Fifo ist diese Klasse nie sichtbar.
+     */
     class Fifo::Impl {
         public:
             Impl(const size_t size) :
                 size(size),
                 count(0),
                 readPos(0),
-                data(new double[size]) {
+                data(new double[size]) {  // Kann std::bad_alloc werfen -> Doku!
             }
 
             ~Impl() {
@@ -38,22 +42,31 @@ namespace task02 {
             }
 
             void push(const double &d) {
-                assert(getRemaining() > 0);
-                assert(count < size);
+                /*
+                 * Fifo::Impl gehört zu Fifo. Damit haben die Methoden von
+                 * Fifo::Impl logisch den Rang einer privaten Methode und werden
+                 * entsprechend behandelt.
+                 * Sprich: Invarianten und Vorbedingungen werden nur über
+                 *         Assertions geprüft, da bei korrekter Implementierung
+                 *         nur "vertrauenswürdige" Daten innerhalb der Komponente
+                 *         verwendet werden.
+                 */
+                assert(count < size); // Freier Speicherplatz vorhanden
 
                 data[(readPos + count++) % size] = d;
 
-                assert(count <= size);
+                assert(count <= size); // Maximal size Elemente gespeichert
             }
 
             double pop() {
-                assert(count <= size);
-                assert(count > 0);
+                assert(count > 0); // Fifo ist nicht leer
 
                 double result = data[readPos++];
 
                 readPos %= size;
                 count--;
+
+                // assert(readPos < size) // Nicht wirklich erforderlich, da modulo ...
 
                 return result;
             }
@@ -64,6 +77,8 @@ namespace task02 {
             }
 
             size_t getDataCopy(double *buffer, const size_t count) {
+                // Hier sind mir keine sinnvollen/nichttrivialen Invarianten eingefallen ...
+
                 size_t read = readPos;
 
                 for (size_t i = 0; i < std::min(count, this->count); i++) {
@@ -76,10 +91,10 @@ namespace task02 {
 
         protected:
             const size_t size;
-            size_t count;
-            size_t readPos;
+            size_t count; // Invariante: count <= size
+            size_t readPos; // Invariante: readPos <= size
 
-            double * const data;
+            double * const data; // Invariante: Zeigt auf double[size]
     };
 
     Fifo::Fifo(const size_t size) :
@@ -91,7 +106,19 @@ namespace task02 {
     }
 
     void Fifo::push(const double &d) {
-        if (impl->getRemaining() == 0) {
+        /*
+         * Dieser Teil der Klasse gehört zur öffentlichen Schnittstelle. Alle
+         * übergebenen Daten müssen auf ihre Korrektheit geprüft werden.
+         * Verletzungen der Schnittstellenspezifikation werden entsprechend
+         * dieser behandelt, hier über eine Exception.
+         * Bei komplexeren Klassen kann außerdem der Aufruf von Methoden an
+         * innere Zustande gekoppelt sein, auch diese Vorbedingungen sollten
+         * dann entsprechend überprüft werden. Grundsätzlich sollten an der
+         * "Grenze" zwischen Innen und Außen alle versehentlich oder absichtlich
+         * von außen verletzbaren Vorbedingungen überprüft werden, sofern dieser
+         * Aufwand vertretbar ist.
+         */
+        if (impl->getRemaining() == 0) { // Fifo voll
             throw std::logic_error("Fifo is already full");
         }
 
@@ -99,7 +126,7 @@ namespace task02 {
     }
 
     double Fifo::pop() {
-        if (impl->getCount() == 0) {
+        if (impl->getCount() == 0) { // Fifo leer
             throw std::logic_error("Fifo is already empty");
         }
 

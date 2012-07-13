@@ -13,7 +13,15 @@
 namespace task02 {
 
     /**
-     * Implementiert einen Ringpuffer (FiFo) für double-Zahlen.
+     * Implementiert einen Ringpuffer (FiFo) konstanter Größe für double-Zahlen.
+     *
+     * Laufzeitgarantien: Alle Methoden werden in O(1) (konstanter Zeit)
+     *                    ausgeführt. Ausgenommen davon ist getDataCopy()
+     *                    mit einer Laufzeit die in O(n) liegt.
+     *
+     * Exceptions: Wenn eine Methode dieser Klasse eine Exception wirft,
+     *             verbleibt die Fifo-Instanz in einem unveränderten Zustand
+     *             und kann normal weiter verwendet werden.
      *
      * @author Markus Jung
      */
@@ -24,8 +32,8 @@ namespace task02 {
              * Erzeugt eine neue Fifo-Instanz mit der gegebenen Kapazität.
              *
              * @param size die Größe des Fifos
-             * @throw std::bad_alloc wenn bei der (internen) Speicherallokation
-			 *        etwas schiefgeht
+             * @throw std::bad_alloc wenn die (interne) Speicherallokation
+			 *                       fehlschlägt
              */
 		    Fifo(const size_t size);
 		    /**
@@ -37,8 +45,6 @@ namespace task02 {
 		    /**
 		     * Fügt ein neues Element am Ende des Fifos ein, sofern der Fifo
 		     * noch über freien Speicherplatz verfügt.
-		     *
-		     * Laufzeit: O(1)
 		     *
 		     * @param d das am Ende einzufügende Element
 		     * @throw std::logic_error wenn (getRemaining == 0)
@@ -60,7 +66,7 @@ namespace task02 {
 		    /**
 		     * Kopiert die im Fifo gespeicherten Daten in das übergebene Array.
 		     * Es werden so viele Elemente kopiert, bis entweder alle momentan
-			 * im Fifo vorhandenen kopiert wurden oder der Array voll ist.
+			 * im Fifo vorhandenen kopiert wurden oder das Array voll ist.
 		     *
 		     * @param buffer die Adresse des Arrays, in das der Inhalt des Fifos
 		     *               kopiert werden soll
@@ -95,8 +101,8 @@ namespace task02 {
 		    size_t getRemaining();
 		    
 		private:
-		    class Impl;
-		    Impl *impl;
+		    class Impl; // forward-declaration of nested implementation class
+		    Impl *impl; // pointer-to-implementation
     };
 
 }
