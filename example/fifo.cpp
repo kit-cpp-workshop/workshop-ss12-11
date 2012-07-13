@@ -25,7 +25,7 @@ namespace task02 {
                 data(new double[size]) {  // Kann std::bad_alloc werfen -> Doku!
             }
 
-            ~Impl() {
+            ~Impl() noexcept {
                 delete[] data;
             }
 
