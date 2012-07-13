@@ -80,13 +80,14 @@ namespace task02 {
                 // Hier sind mir keine sinnvollen/nichttrivialen Invarianten eingefallen ...
 
                 size_t read = readPos;
+                size_t const copyCount = std::min(count, this->count)
 
-                for (size_t i = 0; i < std::min(count, this->count); i++) {
+                for (size_t i = 0; i < copyCount; i++) {
                     buffer[i] = data[read++];
                     read %= size;
                 }
 
-                return std::min(count, this->count);
+                return copyCount;
             }
 
         protected:
