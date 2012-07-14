@@ -16,7 +16,15 @@ Die Vortragsfolien stehen als [PDF](https://github.com/downloads/kit-cpp-worksho
 
 ### Screencast
 
-Ein Screencast des Vortrags wird nach dem Workshop an dieser Stelle verlinkt.
+Ein Screencast des Vortrags steht zum [Download](http://ubuntuone.com/7l3AYXaeiUpkBiZqKVdrN4) bereit.
+
+ * ab 00:00 exception guarantees
+ * ab 08:30 Software-Entwicklungsprozesse
+ * ab 13:47 Defensive Programmierung
+ * ab 26:49 Dokumentation
+ * ab 31:10 Testing
+ * ab 37:13 Entwurfsmuster
+ * ab 52:29 (Keine) Vorstellung der Praxisaufgaben
 
 ## Aufgaben
 
