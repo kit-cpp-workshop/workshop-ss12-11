@@ -16,7 +16,7 @@ Die Vortragsfolien stehen als [PDF](kit-cpp-workshop.github.com/raw/downloads/wo
 
 ### Screencast
 
-Ein Screencast des Vortrags steht zum [Download](http://ubuntuone.com/7l3AYXaeiUpkBiZqKVdrN4) bereit.
+Ein Screencast des Vortrags steht zum [Download](https://drive.google.com/file/d/0B18AwdjM48imZ3ViTEFnbFVMMm8/edit?usp=sharing) bereit.
 
  * ab 00:00 exception guarantees
  * ab 08:30 Software-Entwicklungsprozesse
